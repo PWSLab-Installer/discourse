@@ -18,55 +18,55 @@
         version: master
         force: yes
 
-    - pause:
-          prompt: "Hostname for your Discourse?"
-          echo: yes
-      register: hostname_result
+    # - pause:
+    #       prompt: "Hostname for your Discourse?"
+    #       echo: yes
+    #   register: hostname_result
 
-    - pause:
-          prompt: Email address for admin account(s)? 
-          echo: yes
-      register: email_result
+    # - pause:
+    #       prompt: Email address for admin account(s)? 
+    #       echo: yes
+    #   register: email_result
 
-    - pause:
-          prompt: "SMTP server address?"
-          echo: yes
-      register: smtp_server_address_result
+    # - pause:
+    #       prompt: "SMTP server address?"
+    #       echo: yes
+    #   register: smtp_server_address_result
     
-    - pause:
-          prompt: "SMTP user name?"
-          echo: yes
-      register: smtp_username_result
+    # - pause:
+    #       prompt: "SMTP user name?"
+    #       echo: yes
+    #   register: smtp_username_result
 
-    - pause:
-          prompt: "SMTP port?"
-          echo: yes
-      register: smtp_port_result
+    # - pause:
+    #       prompt: "SMTP port?"
+    #       echo: yes
+    #   register: smtp_port_result
 
-    - pause:
-          prompt: "SMTP password?"
-          echo: yes
-      register: smtp_password_result
+    # - pause:
+    #       prompt: "SMTP password?"
+    #       echo: yes
+    #   register: smtp_password_result
 
-    - set_fact:
-            hostname_result: "{{ hostname_result.user_input }}"
-            email_result: "{{ email_result.user_input }}"
-            smtp_server_address_result: "{{ smtp_server_address_result.user_input }}"
-            smtp_username_result: "{{ smtp_username_result.user_input }}"
-            smtp_port_result: "{{ smtp_port_result.user_input }}"
-            smtp_password_result: "{{ smtp_password_result.user_input }}"
-    - debug:
-            var: hostname_result
+    # - set_fact:
+    #         hostname_result: "{{ hostname_result.user_input }}"
+    #         email_result: "{{ email_result.user_input }}"
+    #         smtp_server_address_result: "{{ smtp_server_address_result.user_input }}"
+    #         smtp_username_result: "{{ smtp_username_result.user_input }}"
+    #         smtp_port_result: "{{ smtp_port_result.user_input }}"
+    #         smtp_password_result: "{{ smtp_password_result.user_input }}"
+    # - debug:
+    #         var: hostname_result
 
-    - name: Execute the script
-      expect:
-        command: bash /var/discourse/discourse-setup
-        responses:
-          "Hostname for your Discourse?": "{{ hostname_result }}"
-          "Email address for admin account(s)?": "{{ email_result }}"
-          "SMTP server address?": "{{ smtp_server_address_result }}"
-          "SMTP user name?": "{{ smtp_username_result }}"
-          "SMTP port?": "{{ smtp_port_result }}"
-          "SMTP password?": "{{ smtp_password_result }}"
-          "Optional email address for Let's Encrypt warnings?": ""
-          "ENTER to continue, 'n' to try again, Ctrl+C to exit": ""
+    # - name: Execute the script
+    #   expect:
+    #     command: bash /var/discourse/discourse-setup
+    #     responses:
+    #       "Hostname for your Discourse?": "{{ hostname_result }}"
+    #       "Email address for admin account(s)?": "{{ email_result }}"
+    #       "SMTP server address?": "{{ smtp_server_address_result }}"
+    #       "SMTP user name?": "{{ smtp_username_result }}"
+    #       "SMTP port?": "{{ smtp_port_result }}"
+    #       "SMTP password?": "{{ smtp_password_result }}"
+    #       "Optional email address for Let's Encrypt warnings?": ""
+    #       "ENTER to continue, 'n' to try again, Ctrl+C to exit": ""
